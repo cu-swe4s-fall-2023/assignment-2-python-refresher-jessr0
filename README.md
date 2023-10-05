@@ -34,4 +34,21 @@ and descriptions.
 
 my.utils contains the code that performs the aforementioned three step process.
 print.fires contains the arguments and the main function that imports and runs the
-utility script. run.sh runs print.fires.   
+utility script. run.sh runs print.fires.
+
+Version 3.0
+
+print.fires now accepts arguments for one of three optional statistical operations 
+(mean, median, or standard deviation). Choosing not to perform statistics will return the
+list of integers.
+
+Syntax of print fires in run.sh: python print_fires.py --arg "" --arg "" ...
+To run print_fires.py: bash run.sh
+
+Unit and functional tests are now included
+
+Running unit tests:
+python test_my_utils.py
+
+Running functional tests:
+bash test_print_fires.sh   

@@ -23,6 +23,9 @@ def get_args():
         '--fires_column', type=int, required=True,
         help='Column in which fires are reported')
 
+    parser.add_argument(
+        '--stat_op', required=False, help='Statistics calculation of choice')
+
     args = parser.parse_args()
 
     return args
@@ -40,7 +43,12 @@ def main():
 
     fires = my_utils.modify_array(smallarr)
 
-    print(fires)
+    stat_fires = my_utils.stat_array(fires, args.stat_op)
+
+    if stat_fires is not None:
+        print(stat_fires)
+    else:
+        print(fires)
 
 
 if __name__ == '__main__':

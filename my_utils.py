@@ -10,6 +10,7 @@ class ErrorCode(Enum):
     NO_FILE = 1001
     NO_PERM = 999
     VALUE = 998
+    ZERO_DIV = 997
 
 
 def get_column(file_name, country, country_column, fires_column):
@@ -92,3 +93,47 @@ def modify_array(new_array):
             return fires_lst_int
         else:
             sys.exit(1)
+
+
+def stat_array(fires_lst_int, stat_op):
+
+    """Performs user-selected statistical operation"""
+
+    if stat_op == 'mean':
+        try:
+            mean_val = sum(fires_lst_int) / len(fires_lst_int)
+            return mean_val
+        except ZeroDivisionError:
+            print(
+                f"Error Code:{ErrorCode.ZERO_DIV.value} List length not > 0")
+            return None
+    elif stat_op == 'median':
+        try:
+            length = len(fires_lst_int)
+            fires_sorted = sorted(fires_lst_int)
+            if length % 2 == 0:
+                median_a = fires_sorted[length // 2]
+                median_b = fires_sorted[length // 2 - 1]
+                median_val = (median_a + median_b) / 2
+            else:
+                median_val = fires_sorted[length // 2]
+            return median_val
+        except ValueError:
+            print(
+                f"Error Code:{ErrorCode.VALUE.value} List must be numbers")
+            return None
+    elif stat_op == 'standard deviation':
+        try:
+            m = sum(fires_lst_int) / len(fires_lst_int)
+            s = 0
+            for i in fires_lst_int:
+                s = s + ((i - m) ** 2)
+            var = s / len(fires_lst_int)
+            statdev = var ** 0.5
+            return statdev
+        except ZeroDivisionError:
+            print(
+                f"Error Code:{ErrorCode.ZERO_DIV.value} List length not > 0")
+            return None
+    else:
+        return None
