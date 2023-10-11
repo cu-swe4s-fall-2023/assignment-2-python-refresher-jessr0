@@ -1,4 +1,4 @@
-test - e ssshtest | | wget - q https: // raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
+test - e ssshtest || wget - q https: // raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
 . ssshtest
 
 run test_all_args python print_fires.py --file_name Agro_short.csv --country Afghanistan --country_column 0 --fires_column 3

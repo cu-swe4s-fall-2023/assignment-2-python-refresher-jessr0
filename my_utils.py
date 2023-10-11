@@ -41,12 +41,13 @@ def get_column(file_name, country, country_column, fires_column):
         print(
             f"Error Code:{ErrorCode.NO_FILE.value} - Could not find "
             + file_name)
+        raise
     except PermissionError:
         print(
             f"Error Code:{ErrorCode.NO_PERM.value} - Could not open "
             + file_name)
-    finally:
-        return array_con
+        raise
+    return array_con
 
 
 def filter_array(array_con, country, fires_column):
@@ -106,7 +107,7 @@ def stat_array(fires_lst_int, stat_op):
         except ZeroDivisionError:
             print(
                 f"Error Code:{ErrorCode.ZERO_DIV.value} List length not > 0")
-            return None
+            raise
     elif stat_op == 'median':
         try:
             length = len(fires_lst_int)

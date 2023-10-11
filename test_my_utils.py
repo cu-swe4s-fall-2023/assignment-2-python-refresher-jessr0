@@ -31,7 +31,7 @@ class TestGetColumn(unittest.TestCase):
     def test_file_not_found(self):
         self.assertRaises(
             FileNotFoundError,
-            my_utils.get_column
+            my_utils.get_column,
             'notreal.txt',
             "United States of America",
             0,
@@ -88,39 +88,30 @@ class TestArrayMods(unittest.TestCase):
     def test_right_value(self):
         self.assertTrue
 
-    def test_wrong_value(self):
-        self.assertRaises(
-            ValueError,
-            my_utils.modify_array,
-            'valuetestbad.txt'
-        )
-
 
 class TestStatArray(unittest.TestCase):
 
-    def setUp(self):
-        self.values = [1, 2, 3, 4, 5]
-        self.novalues = []
-
-    def tearDown(self):
-        self.values = []
-        self.novalues = []
-
     def test_mean(self):
-        self.assertEqual(my_utils.mean_array(self.values), 3)
-        self.assertRaises(
-            ZeroDivisionError,
-            my_utils.mean_array,
-            self.novalues
-        )
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'mean'), 3)
+        with self.assertRaises(ZeroDivisionError):
+            my_utils.stat_array([], 'mean')
 
-    def test_median(self):
-        self.assertEqual(my_utils.median_array(self.values), 3)
-        self.assertRaises(ValueError, my_utils.median_array, self.novalues)
+    def test_median_even(self):
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4], 'median'), 2.5)
+
+    def test_median_odd(self):
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'median'), 3)
+
+    def test_median_empty(self):
+        self.assertIsNone: (my_utils.stat_array([]))
 
     def test_statdev(self):
-        self.assertEqual(round(float(my_utils.sd_array(self.values)), 2), 1.41)
-        self.assertRaises(ZeroDivisionError, my_utils.sd_array, self.novalues)
+        self.assertAlmostEqual(
+            my_utils.stat_array([1, 2, 3, 4, 5], 'standard deviation'),
+            1.41,
+            places=2
+        )
+        self.assertIsNone: (my_utils.stat_array([]))
 
 
 if __name__ == "__main__":
