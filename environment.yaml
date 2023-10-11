@@ -1,3 +1,5 @@
 name: swe4s5
 channels:
   - defaults
+dependencies:
+  - python

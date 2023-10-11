@@ -31,7 +31,7 @@ class TestGetColumn(unittest.TestCase):
     def test_file_not_found(self):
         self.assertRaises(
             FileNotFoundError,
-            my_utils.get_column
+            my_utils.get_column,
             'notreal.txt',
             "United States of America",
             0,
