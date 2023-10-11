@@ -51,4 +51,8 @@ Running unit tests:
 python test_my_utils.py
 
 Running functional tests:
-bash test_print_fires.sh   
+bash test_print_fires.sh
+
+Version 4.0
+
+Added scripts for continuous integration. These run all tests and check style when any branch is pushed or pull requests are made on main.   
