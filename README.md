@@ -51,4 +51,8 @@ Running unit tests:
 python test_my_utils.py
 
 Running functional tests:
-bash test_print_fires.sh   
+bash test_print_fires.sh
+
+Version 4.0
+
+Included CI suite for unit tests, functional tests, and pycodestyle at the push and pull request steps.   
