@@ -103,11 +103,15 @@ class TestStatArray(unittest.TestCase):
         self.assertEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'median'), 3)
 
     def test_median_empty(self):
-        self.assertIsNone:(my_utils.stat_array([]))
+        self.assertIsNone: (my_utils.stat_array([]))
 
     def test_statdev(self):
-        self.assertAlmostEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'standard deviation'), 1.41, places=2)
-        self.assertIsNone:(my_utils.stat_array([]))
+        self.assertAlmostEqual(
+            my_utils.stat_array([1, 2, 3, 4, 5], 'standard deviation'),
+            1.41,
+            places=2
+        )
+        self.assertIsNone: (my_utils.stat_array([]))
 
 
 if __name__ == "__main__":
