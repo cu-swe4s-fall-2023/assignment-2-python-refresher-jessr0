@@ -41,18 +41,3 @@ jobs:
           activate-environment: swe4s5
           environment-file: environment.yaml
       - run: bash test_print_fires.sh
-
-  run_all_tests:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: 'bash -el {0}'
-    steps:
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          environment-file: environment.yaml
-          environment-name: swe4s5
-      - run: |
-          python -m unittest test_my_utils
-          bash test_print_fires.sh

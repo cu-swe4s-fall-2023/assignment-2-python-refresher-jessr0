@@ -107,20 +107,20 @@ class TestStatArray(unittest.TestCase):
         self.novalues = []
 
     def test_mean(self):
-        self.assertEqual(my_utils.mean_array(self.values), 3)
+        self.assertEqual(my_utils.stat_array(self.values, 'mean'), 3)
         self.assertRaises(
             ZeroDivisionError,
-            my_utils.mean_array,
+            my_utils.stat_array,
             self.novalues
         )
 
     def test_median(self):
-        self.assertEqual(my_utils.median_array(self.values), 3)
-        self.assertRaises(ValueError, my_utils.median_array, self.novalues)
+        self.assertEqual(my_utils.stat_array(self.values, 'median'), 3)
+        self.assertRaises(ValueError, my_utils.stat_array, self.novalues)
 
     def test_statdev(self):
-        self.assertEqual(round(float(my_utils.sd_array(self.values)), 2), 1.41)
-        self.assertRaises(ZeroDivisionError, my_utils.sd_array, self.novalues)
+        self.assertEqual(round(float(my_utils.stat_array(self.values, 'standard deviation')), 2), 1.41)
+        self.assertRaises(ZeroDivisionError, my_utils.stat_array, self.novalues)
 
 
 if __name__ == "__main__":
