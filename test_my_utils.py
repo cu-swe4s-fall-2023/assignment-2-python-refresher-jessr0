@@ -119,8 +119,13 @@ class TestStatArray(unittest.TestCase):
         self.assertRaises(ValueError, my_utils.stat_array, self.novalues)
 
     def test_statdev(self):
-        self.assertEqual(round(float(my_utils.stat_array(self.values, 'standard deviation')), 2), 1.41)
-        self.assertRaises(ZeroDivisionError, my_utils.stat_array, self.novalues)
+        expected_std_dev = 1.41
+        comp_std_dev = my_utils.stat_array(self.values, 'standard deviation')
+        self.assertEqual(round(float(comp_std_dev), 2), expected_std_dev)
+        self.assertRaises(
+            ZeroDivisionError,
+            my_utils.stat_array,
+            self.novalues)
 
 
 if __name__ == "__main__":
