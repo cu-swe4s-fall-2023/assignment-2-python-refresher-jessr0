@@ -1,4 +1,4 @@
-name: test suite1
+name: test suite
 
 on:
   push:
