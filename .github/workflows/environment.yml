@@ -2,9 +2,3 @@ name: swe4s5
 channels:
   - defaults
   - conda-forge
-dependencies:
-  - python
-  - sys
-  - argparse
-  - os
-  - unittest
