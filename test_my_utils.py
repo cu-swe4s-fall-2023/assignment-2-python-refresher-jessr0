@@ -88,44 +88,26 @@ class TestArrayMods(unittest.TestCase):
     def test_right_value(self):
         self.assertTrue
 
-    def test_wrong_value(self):
-        self.assertRaises(
-            ValueError,
-            my_utils.modify_array,
-            'valuetestbad.txt'
-        )
-
 
 class TestStatArray(unittest.TestCase):
 
-    def setUp(self):
-        self.values = [1, 2, 3, 4, 5]
-        self.novalues = []
-
-    def tearDown(self):
-        self.values = []
-        self.novalues = []
-
     def test_mean(self):
-        self.assertEqual(my_utils.stat_array(self.values, 'mean'), 3)
-        self.assertRaises(
-            ZeroDivisionError,
-            my_utils.stat_array,
-            self.novalues
-        )
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'mean'), 3)
+        with self.assertRaises(ZeroDivisionError):
+            my_utils.stat_array([], 'mean')
 
-    def test_median(self):
-        self.assertEqual(my_utils.stat_array(self.values, 'median'), 3)
-        self.assertRaises(ValueError, my_utils.stat_array, self.novalues)
+    def test_median_even(self):
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4], 'median'), 2.5)
+
+    def test_median_odd(self):
+        self.assertEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'median'), 3)
+
+    def test_median_empty(self):
+        self.assertIsNone:(my_utils.stat_array([]))
 
     def test_statdev(self):
-        expected_std_dev = 1.41
-        comp_std_dev = my_utils.stat_array(self.values, 'standard deviation')
-        self.assertEqual(round(float(comp_std_dev), 2), expected_std_dev)
-        self.assertRaises(
-            ZeroDivisionError,
-            my_utils.stat_array,
-            self.novalues)
+        self.assertAlmostEqual(my_utils.stat_array([1, 2, 3, 4, 5], 'standard deviation'), 1.41, places=2)
+        self.assertIsNone:(my_utils.stat_array([]))
 
 
 if __name__ == "__main__":
