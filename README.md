@@ -55,4 +55,4 @@ bash test_print_fires.sh
 
 Version 4.0
 
-Included CI suite for unit tests, functional tests, and pycodestyle at the push and pull request steps.   
+Included continuous integration suite for unit tests, functional tests, and pycodestyle at the push and pull request steps.   
