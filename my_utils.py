@@ -50,7 +50,7 @@ def get_column(file_name, country, country_column, fires_column):
     return array_con
 
 
-def filter_array(array_con, country, fires_column):
+def filter_array(array_con, country, fires_column, out_file):
     """Generates new array that only contains values
         in the fires column that correspond to country
         query.
@@ -73,7 +73,10 @@ def filter_array(array_con, country, fires_column):
         for j in i:
             if j == country:
                 new_array.append(i[fires_column])
-
+    with open(out_file, 'w') as file:
+        for number in new_array:
+            file.write(str(number) + '\n')
+    
     return new_array
 
 

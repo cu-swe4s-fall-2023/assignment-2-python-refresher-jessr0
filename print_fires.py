@@ -26,6 +26,9 @@ def get_args():
     parser.add_argument(
         '--stat_op', required=False, help='Statistics calculation of choice')
 
+    parser.add_argument(
+        '--out_file', required=False, help='Output file for plots')
+
     args = parser.parse_args()
 
     return args
@@ -39,7 +42,7 @@ def main():
         args.country_column, args.fires_column)
 
     smallarr = my_utils.filter_array(
-        bigarr, args.country, args.fires_column)
+        bigarr, args.country, args.fires_column, args.out_file)
 
     fires = my_utils.modify_array(smallarr)
 

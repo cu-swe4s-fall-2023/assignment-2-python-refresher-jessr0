@@ -1,6 +1,8 @@
-name: swe4s5
+name: new_env
 channels:
   - defaults
 dependencies:
-  - python
+  - python3
   - pycodestyle
+  - matplotlib
+
