@@ -56,4 +56,34 @@ bash test_print_fires.sh
 Version 4.0
 
 Included continuous integration suite for unit tests, functional tests, and pycodestyle 
-at the push and pull request steps.   
+at the push and pull request steps.
+
+Version 5.0
+
+I was curious about the frequency of fires that occurred in different countries across all years listed. 
+To acquire this, I added a function to the filter_array function in my_utils to output the filtered array as a text file.
+From this text file, I am able to generate an output file of fires data seperated by country by using the --out_file flag
+when I run print_fires. This text file is then used as the data_file input into the plot_his function. 
+
+plot_his.py takes the following arguments:
+data_file: (text file created --output_file flag in print_fires run)
+output_file: Name_of_country
+title: Name_of_country.png
+x: x axis title
+y: y axis title
+
+Using plot_his.py, you can plot the frequency of fires over time for any country in the dataset. 
+I chose Afghanistan, Serbia, and Croatia. (See accompanied .png files). Overall, Afghanistan
+has the lowest frequency of forest fires between all countries. This was an expected result,
+as this country has a largely arid climate with mountainous and desert terrain. For most years,
+Croatia had between zero and ten fires, with some years extending between 10 and 20 fires/year. 
+In one year, Croatia had almost seventy fires, which is likely an outlier in the data. Serbia 
+had fewer fires than Croatia overall, with most years displaying between zero and five fires. Serbia
+also displays some single-year events in which the frequency fires ranged from 10-20, as well as one year in
+which 25 fires occurred. 
+
+This data is isolated, and more context is needed to make meaningful conclusions about these results.
+However, a few hypotheses can be made. The first is that the number of fires likely correlates with the
+type of landscape present. Serbia and Croatia are much more likely to have forested habitats, and are therefore 
+much more likely to experience fires. Other factors, such as annual rainfall, lightning strikes, and human activity
+also likely play a roll, though further analysis is needed to verify these claims.    
